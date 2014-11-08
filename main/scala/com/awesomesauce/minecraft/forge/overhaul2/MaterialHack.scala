@@ -7,7 +7,7 @@ import net.minecraft.block.material.Material
  */
 object MaterialHack {
   def setWoodMaterial = {
-    val method = Material.wood.getClass.getMethod("setRequiresTool")
+    val method = Material.wood.getClass.getMethod("func_76221_f")
     method.setAccessible(true)
     method.invoke(Material.wood)
   }
