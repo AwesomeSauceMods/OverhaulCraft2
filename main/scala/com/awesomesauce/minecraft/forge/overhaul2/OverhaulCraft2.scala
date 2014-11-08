@@ -3,20 +3,26 @@ package com.awesomesauce.minecraft.forge.overhaul2
 import com.awesomesauce.minecraft.forge.core.components.AwesomeSauceComponents
 import com.awesomesauce.minecraft.forge.core.lib.TAwesomeSauceMod
 import com.awesomesauce.minecraft.forge.core.lib.util.ItemUtil
-import cpw.mods.fml.common.{ModMetadata, Mod}
 import cpw.mods.fml.common.Mod.EventHandler
-import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
-import net.minecraft.block.material.Material
+import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
+import cpw.mods.fml.common.{Mod, ModMetadata}
 import net.minecraft.init.{Blocks, Items}
-import net.minecraft.item.{ItemAxe, ItemTool, ItemStack, Item}
+import net.minecraft.item.{Item, ItemStack}
 import net.minecraftforge.common.util.EnumHelper
-import net.minecraftforge.oredict.{OreDictionary, ShapelessOreRecipe, ShapedOreRecipe}
+import net.minecraftforge.oredict.{OreDictionary, ShapelessOreRecipe}
 
 /**
  * Created by gjgfuj on 11/1/14.
  */
 @Mod(modid="OverhaulCraft2", modLanguage="scala")
 object OverhaulCraft2 extends TAwesomeSauceMod {
+
+  @Mod.Metadata("OverhaulCraft2")
+  var metadata: ModMetadata = null
+  var flintHammer: Item = null
+  var flintAxe: Item = null
+  var woodCutterTool: Item = null
+  var woodHammerTool: Item = null
 
   @EventHandler
   def aspri(e: FMLPreInitializationEvent) = super.awesomesaucepreinit(e)
@@ -35,13 +41,6 @@ object OverhaulCraft2 extends TAwesomeSauceMod {
 
   def getTabIconItem = () => AwesomeSauceComponents.ingotPureAwesomeite
 
-  @Mod.Metadata("OverhaulCraft2")
-  var metadata: ModMetadata = null
-
-  var flintHammer : Item = null
-  var flintAxe : Item = null
-  var cutterTool : Item = null
-  var hammerTool : Item = null
   def init() = {
     OreDictionary.registerOre("dirt", Blocks.dirt)
     OreDictionary.registerOre("flint", Items.flint)
@@ -54,7 +53,7 @@ object OverhaulCraft2 extends TAwesomeSauceMod {
   }
   def preInit() = {
     MaterialHack.setWoodMaterial
-    val materialFlint = EnumHelper.addToolMaterial("BASICFLINT", 1, 4, 0.5F, 4, 0, 1)
+    val materialFlint = EnumHelper.addToolMaterial("BASICFLINT", 1, 4, 0.5F, 4, 0)
     flintAxe = ItemUtil.makeItem(this, "flintAxe", new ItemOverhaulAxe(materialFlint))
     flintHammer = ItemUtil.makeItem(this, "flintHammer")
   }
