@@ -21,6 +21,7 @@ object OverhaulCraft2 extends TAwesomeSauceMod {
   var metadata: ModMetadata = null
   var flintHammer: Item = null
   var flintAxe: Item = null
+  var dirtBall: Item = null
   var woodCutterTool: Item = null
   var woodHammerTool: Item = null
 
@@ -56,6 +57,7 @@ object OverhaulCraft2 extends TAwesomeSauceMod {
     val materialFlint = EnumHelper.addToolMaterial("BASICFLINT", 1, 4, 0.5F, 4, 0)
     flintAxe = ItemUtil.makeItem(this, "flintAxe", new ItemOverhaulAxe(materialFlint))
     flintHammer = ItemUtil.makeItem(this, "flintHammer")
+    dirtBall = ItemUtil.makeItem(this, "dirtBall")
   }
   def postInit() = {
 
