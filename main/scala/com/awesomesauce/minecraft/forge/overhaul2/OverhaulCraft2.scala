@@ -49,7 +49,7 @@ object OverhaulCraft2 extends TAwesomeSauceMod {
     OreDictionary.registerOre("flint", Items.flint)
     OreDictionary.registerOre("overhaul2.cutter", Items.flint)
     OreDictionary.registerOre("overhaul2.hammer", flintHammer)
-    ItemUtil.addRecipe(this, new ShapedOreRecipe(new ItemStack(Blocks.dirt), "xxx", "xxx", "xxx", 'x', "dirtBall"))
+    ItemUtil.addRecipe(this, new ShapedOreRecipe(new ItemStack(Blocks.dirt), "xxx", "xxx", "xxx", Character.valueOf('x'), "dirtBall"))
     ItemUtil.addRecipe(this, new ShapelessOreRecipe(new ItemStack(Items.flint), "dirtBall", "dirtBall", "dirtBall", "dirtBall"))
     ItemUtil.addRecipe(this, new ShapelessOreRecipe(new ItemStack(flintAxe), "flint", "overhaul2.cutter"))
     ItemUtil.addRecipe(this, new ShapelessOreRecipe(new ItemStack(flintHammer), "flint", "flint", "stick"))
