@@ -5,10 +5,12 @@ import com.awesomesauce.minecraft.forge.core.lib.TAwesomeSauceMod
 import com.awesomesauce.minecraft.forge.core.lib.util.ItemUtil
 import cpw.mods.fml.common.Mod.EventHandler
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
+import cpw.mods.fml.common.eventhandler.SubscribeEvent
 import cpw.mods.fml.common.{Mod, ModMetadata}
 import net.minecraft.init.{Blocks, Items}
 import net.minecraft.item.{Item, ItemStack}
 import net.minecraftforge.common.util.EnumHelper
+import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent
 import net.minecraftforge.oredict.{OreDictionary, ShapelessOreRecipe}
 
 /**
@@ -58,6 +60,16 @@ object OverhaulCraft2 extends TAwesomeSauceMod {
     flintAxe = ItemUtil.makeItem(this, "flintAxe", new ItemOverhaulAxe(materialFlint))
     flintHammer = ItemUtil.makeItem(this, "flintHammer")
     dirtBall = ItemUtil.makeItem(this, "dirtBall")
+  }
+
+  @SubscribeEvent
+  def blockBreak(e: HarvestDropsEvent) = {
+    if (e.block == Blocks.dirt) {
+      if (e.harvester.getHeldItem == null || !e.harvester.getHeldItem.getItem.getToolClasses(e.harvester.getHeldItem).contains("shovel")) {
+        e.drops.clear()
+        e.drops.add(new ItemStack(dirtBall, 2))
+      }
+    }
   }
   def postInit() = {
 
