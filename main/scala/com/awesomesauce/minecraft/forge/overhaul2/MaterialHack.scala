@@ -7,8 +7,11 @@ import net.minecraft.block.material.Material
  */
 object MaterialHack {
   def setWoodMaterial = {
-    val method = Material.wood.getClass.getMethod("func_76221_f")
-    method.setAccessible(true)
-    method.invoke(Material.wood)
+    for (m <- Material.wood.getClass.getMethods) {
+      println(m.toString)
+    }
+    //val method = Material.wood.getClass.getMethod("")
+    //method.setAccessible(true)
+    //method.invoke(Material.wood)
   }
 }
