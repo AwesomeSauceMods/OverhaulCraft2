@@ -11,7 +11,7 @@ import net.minecraft.init.{Blocks, Items}
 import net.minecraft.item.{Item, ItemStack}
 import net.minecraftforge.common.util.EnumHelper
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent
-import net.minecraftforge.oredict.{OreDictionary, ShapelessOreRecipe}
+import net.minecraftforge.oredict.{OreDictionary, ShapedOreRecipe, ShapelessOreRecipe}
 
 /**
  * Created by gjgfuj on 11/1/14.
@@ -49,7 +49,8 @@ object OverhaulCraft2 extends TAwesomeSauceMod {
     OreDictionary.registerOre("flint", Items.flint)
     OreDictionary.registerOre("overhaul2.cutter", Items.flint)
     OreDictionary.registerOre("overhaul2.hammer", flintHammer)
-    ItemUtil.addRecipe(this, new ShapelessOreRecipe(new ItemStack(Items.flint), "dirt", "dirt", "dirt", "dirt"))
+    ItemUtil.addRecipe(this, new ShapedOreRecipe(new ItemStack(Blocks.dirt), "xxx", "xxx", "xxx", 'x', "dirtBall"))
+    ItemUtil.addRecipe(this, new ShapelessOreRecipe(new ItemStack(Items.flint), "dirtBall", "dirtBall", "dirtBall", "dirtBall"))
     ItemUtil.addRecipe(this, new ShapelessOreRecipe(new ItemStack(flintAxe), "flint", "overhaul2.cutter"))
     ItemUtil.addRecipe(this, new ShapelessOreRecipe(new ItemStack(flintHammer), "flint", "flint", "stick"))
 
@@ -60,6 +61,7 @@ object OverhaulCraft2 extends TAwesomeSauceMod {
     flintAxe = ItemUtil.makeItem(this, "flintAxe", new ItemOverhaulAxe(materialFlint))
     flintHammer = ItemUtil.makeItem(this, "flintHammer")
     dirtBall = ItemUtil.makeItem(this, "dirtBall")
+    OreDictionary.registerOre("dirt", dirtBall)
   }
 
   @SubscribeEvent
