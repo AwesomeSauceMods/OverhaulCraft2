@@ -7,7 +7,7 @@ import net.minecraft.block.material.Material
  */
 object MaterialHack {
   def setWoodMaterial = {
-    for (m <- Material.wood.getClass.getMethods) {
+    for (m <- Material.wood.getClass.getDeclaredMethods) {
       println(m.toString)
     }
     //val method = Material.wood.getClass.getMethod("")
